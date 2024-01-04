@@ -2,25 +2,36 @@ import { useState, useEffect } from 'react';
 import icon from '../images/anon.png'
 import '../css/Controls.scss'
 import YouTube from 'react-youtube';
-import YoutubePlayer from './YoutubePlayer';
-function Controls(props) {
-    //props
-    const { artistName, imageURL, trackList } = props;
+function Controls({ artistName, imageURL, trackList, numOfTracks, ytURL }) {
+
     //volume
     const [volume, setVolume] = useState(25)
     const handleVolume = (e) =>{
         setVolume(e.target.value)
+        if(ytp!==null){
+            ytp.target.setVolume(volume)
+        }
     }
     //handle tracklist
-    const [numOfTracks, setNumOfTracks] = useState(null)
-    useEffect(()=>{
-        if(trackList!==null)setNumOfTracks(trackList.length)
-    },[trackList])
+   
     //handle play/pause
-    const [btnPause, setBtnPause] = useState(true)
+    const [btnPause, setBtnPause] = useState(false)
     const handleBtnPause = () =>{
+        if(ytp !== null){
+            btnPause ? ytp.target.pauseVideo() : ytp.target.playVideo()
+        }
+    }
+    
+    const [ytp, setYtp] = useState(null)
+    const handlePlayPause = () =>{
         setBtnPause(!btnPause)
     }
+    useEffect(()=>{
+        if(ytURL!==null && btnPause === true){
+            setBtnPause(false)
+        }
+    }, [ytURL])
+ 
   return (
     <div className='ControlsContainer'>
         <div className='artistInfo'>
@@ -37,7 +48,7 @@ function Controls(props) {
         </div>
         <div className='controls'>
             <div className='volumeSlider'>
-                <input type="range" min="0" max="100" className='slider' value={volume} onChange={handleVolume}/>
+                <input type="range" step='1' min="-1" max="100" className='slider' value={volume} onChange={handleVolume}/>
                 <div className='fill' style={{width: volume+'%'}}></div>
             </div>
             <div className='buttons'>
@@ -49,7 +60,7 @@ function Controls(props) {
                 <button><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></button>
             </div>
         </div>
-           <YoutubePlayer></YoutubePlayer>     
+        <YouTube className='ytPlayer' videoId={ytURL} opts={{height: '0', width: '0', playerVars: {autoplay: 1,}}} onPause={handlePlayPause} onPlay={handlePlayPause} onReady={(e)=>{setYtp(e); e.target.setVolume(volume);}}/>    
     </div>
     
   )

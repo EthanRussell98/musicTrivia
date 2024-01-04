@@ -3,7 +3,9 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-
+    .ytPlayer{
+        display: none;
+    }
     .artistInfo{
         display: flex;
         
@@ -52,13 +54,13 @@
             background: #18181B;
             transform: translateY(-25%);
             cursor: pointer;
-            
           }
         input::-webkit-slider-runnable-track{
             -webkit-appearance: none;
             height: 10px;
             border-radius: 5px;
             z-index: 1;
+            
         }
         input:focus{
             outline: none;
@@ -70,7 +72,6 @@
             border-radius: 5px;
             top: 50%;
             transform: translatey(-50%);
-            
         }
         .volumeSlider{
             display: flex;

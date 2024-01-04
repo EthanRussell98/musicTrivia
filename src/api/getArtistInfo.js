@@ -42,7 +42,7 @@ class getArtistInfo {
             });
             
             if (numAlbums === curIndex){
-                console.log(tracks)
+                //console.log(tracks)
                 handleArtistInfo(imageURL, tracks)
             }
         }

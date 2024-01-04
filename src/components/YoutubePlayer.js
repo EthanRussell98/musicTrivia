@@ -14,7 +14,7 @@ const YoutubePlayer = () => {
 
   const onReady = (event) => {
     // access to player in all event handlers via event.target
-    console.log('ran')
+    console.log()
     event.target.playVideo(); // autoplay when the player is ready
   };
 
