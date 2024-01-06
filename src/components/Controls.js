@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import icon from '../images/anon.png'
 import '../css/Controls.scss'
 import YouTube from 'react-youtube';
-function Controls({ artistName, imageURL, trackList, numOfTracks, ytURL }) {
+function Controls({ artistName, imageURL, numOfTracks, ytURL }) {
 
     //volume
     const [volume, setVolume] = useState(25)

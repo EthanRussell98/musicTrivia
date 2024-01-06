@@ -72,7 +72,7 @@ function App() {
         <SearchBar token={token} handleArtistSelected={handleArtistSelected}></SearchBar>
       </div>
       <div className='controlsContainer'>
-        <Controls artistName={artistName} imageURL={imageURL} trackList={trackList} numOfTracks={numOfTracks} ytURL={ytURL}></Controls>
+        <Controls artistName={artistName} imageURL={imageURL} numOfTracks={numOfTracks} ytURL={ytURL}></Controls>
       </div>
       <div className='gameContainer'>
         {artistSelected && <button onClick={handleStartGame}>Start</button>}
