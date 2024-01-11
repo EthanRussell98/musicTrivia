@@ -1,7 +1,7 @@
 
 class getYouTubeURL {
     static getData(artist, songname, callback, answers) { 
-        const ytKey = 'AIzaSyCAF2FkHJeh-dvCgsfyWCdtiI2O0LDTuUQ';
+        const ytKey = 'AIzaSyBSZ_45pLS7oMp2Hi9Q7dCuKbYmwWdKSvI';
          (async function(){
             fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${artist + ' ' + songname}&videoEmbeddable=true&type=video&key=${ytKey}`)
             .then(res => res.json())
