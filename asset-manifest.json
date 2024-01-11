@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/musicTrivia/static/css/main.73c5889b.css",
-    "main.js": "/musicTrivia/static/js/main.8eb3aa0a.js",
+    "main.css": "/musicTrivia/static/css/main.60a1c696.css",
+    "main.js": "/musicTrivia/static/js/main.92821814.js",
     "static/js/787.dc86fde3.chunk.js": "/musicTrivia/static/js/787.dc86fde3.chunk.js",
     "index.html": "/musicTrivia/index.html",
-    "main.73c5889b.css.map": "/musicTrivia/static/css/main.73c5889b.css.map",
-    "main.8eb3aa0a.js.map": "/musicTrivia/static/js/main.8eb3aa0a.js.map",
+    "main.60a1c696.css.map": "/musicTrivia/static/css/main.60a1c696.css.map",
+    "main.92821814.js.map": "/musicTrivia/static/js/main.92821814.js.map",
     "787.dc86fde3.chunk.js.map": "/musicTrivia/static/js/787.dc86fde3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.73c5889b.css",
-    "static/js/main.8eb3aa0a.js"
+    "static/css/main.60a1c696.css",
+    "static/js/main.92821814.js"
   ]
 }
