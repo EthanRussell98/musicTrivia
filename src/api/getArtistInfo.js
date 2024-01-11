@@ -34,11 +34,12 @@ class getArtistInfo {
             headers: { 'Authorization' : 'Bearer ' + token}
             });
             const data = await result.json();
-            const bannedWords = ['Skit', 'Live', 'Instrumental', 'Acapella']
-            data.items.forEach(e => {
+            const bannedWords = ['Skit', 'Live', 'Instrumental', 'Acapella', 'A Cappella']
+            data.items.forEach((e)=> {
                 if(!tracks.includes(e.name) && !bannedWords.some(word=> e.name.includes(word))){
                     tracks.push(e.name)
                 }
+                
             });
             
             if (numAlbums === curIndex){

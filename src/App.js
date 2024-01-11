@@ -44,8 +44,11 @@ function App() {
  
   
   const [randomTracks, setRandomTracks] = useState(null)
+  const [answer, setAnswer] = useState(null)
+  const [gameStarted, setGameStarted] = useState(false)
   const handleStartGame = () =>{
     if(trackList!== null){
+      setGameStarted(true)
       let tempRandomTracks = []
       let randomSongIndex = []
       for(let x=0;x<4;x++){
@@ -59,12 +62,15 @@ function App() {
           tempRandomTracks.push(trackList[randomNum])
         }
       }
-      setRandomTracks(tempRandomTracks)
-      getYouTubeURL.getData(artistName, tempRandomTracks[0], youTubeCallback)
+      getYouTubeURL.getData(artistName, tempRandomTracks[0], youTubeCallback, tempRandomTracks)
     }
   }
-  const youTubeCallback = (videoURL) =>{
+  const youTubeCallback = (videoURL, options) =>{
     setytURL(videoURL)
+    setAnswer(options[0])
+    options.sort(() => Math.random() - 0.5);
+    console.log(options)
+    setRandomTracks(options)
   }
   return (
     <div className="App">
@@ -75,9 +81,17 @@ function App() {
         <Controls artistName={artistName} imageURL={imageURL} numOfTracks={numOfTracks} ytURL={ytURL}></Controls>
       </div>
       <div className='gameContainer'>
-        {artistSelected && <button onClick={handleStartGame}>Start</button>}
+        {randomTracks && <button onClick={()=>{console.log('aa')}} className='btnA optionBtn'>{String(randomTracks[0])} </button>}
+        {randomTracks && <button className='btnA optionBtn'>{String(randomTracks[1])} </button>}
+        {randomTracks && <button className='btnA optionBtn'>{String(randomTracks[2])} </button>}
+        {randomTracks && <button className='btnA optionBtn'>{String(randomTracks[3])} </button>}
+        <div className='startBtncontainer'>
+          {artistSelected && <button onClick={handleStartGame}>Start</button>}
+        </div>
       </div>
-      {randomTracks && <p>{String(randomTracks)} </p>}
+      
+      
+    
     </div>
   );
 }

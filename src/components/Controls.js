@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import icon from '../images/anon.png'
 import '../css/Controls.scss'
 import YouTube from 'react-youtube';
-function Controls({ artistName, imageURL, numOfTracks, ytURL }) {
+function Controls({ artistName, imageURL, numOfTracks, ytURL}) {
 
     //volume
-    const [volume, setVolume] = useState(25)
+    const [volume, setVolume] = useState(15)
     const handleVolume = (e) =>{
         setVolume(e.target.value)
         if(ytp!==null){
