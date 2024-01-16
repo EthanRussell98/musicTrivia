@@ -48,8 +48,8 @@ function Controls({ artistName, imageURL, numOfTracks, ytURL, startGameCallback}
         </div>
         <div className='controls'>
             <div className='volumeSlider'>
-                <input type="range" step='1' min="-1" max="100" className='slider' value={volume} onChange={handleVolume}/>
-                <div className='fill' style={{width: volume+'%'}}></div>
+                <input type="range" step='1' min="-2" max="100" className='slider' value={volume} onChange={handleVolume}/>
+                <div className='fill' style={(Number(volume) < 20) ? {width: (Number(volume)+4)+'%'} : {width: volume+'%'}}></div>
             </div>
             <div className='buttons'>
                 {btnPause ? 

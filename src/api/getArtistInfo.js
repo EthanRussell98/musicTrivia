@@ -2,7 +2,7 @@
 class getArtistInfo {
     static getData(token, artistName, handleArtistInfo) {    
         let tracks = [];   
-       const _getID = (async function() {
+        (async function() {
         const result = await fetch(`https://api.spotify.com/v1/search?q=${artistName}&type=artist&limit=1&offset=0` ,{
             method: 'GET',
             headers: { 'Authorization' : 'Bearer ' + token}
@@ -39,13 +39,13 @@ class getArtistInfo {
                 if(!tracks.includes(e.name) && !bannedWords.some(word=> e.name.includes(word))){
                     tracks.push(e.name)
                 }
-                
+                if (numAlbums === curIndex){
+                    console.log(tracks)
+                    handleArtistInfo(imageURL, tracks)
+                }
             });
             
-            if (numAlbums === curIndex){
-                //console.log(tracks)
-                handleArtistInfo(imageURL, tracks)
-            }
+            
         }
    }
  }

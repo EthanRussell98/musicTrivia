@@ -74,6 +74,7 @@
             transform: translatey(-50%);
         }
         .volumeSlider{
+            overflow: hidden;
             display: flex;
             position: relative;
             width: 9rem;
