@@ -41,6 +41,7 @@ function App() {
     setTrackList(tracks)
     setNumOfTracks(tracks.length)
   }
+
   const [btnClicked, setBtnClicked] = useState([null, null, null, null])
   
   const [randomTracks, setRandomTracks] = useState(null)
@@ -80,9 +81,9 @@ function App() {
     setBtnClicked(prevState => {
       const updatedBtnClicked = [...prevState];
       if (randomTracks.indexOf(answer) === option) {
-        updatedBtnClicked[option] = 'green';
+        updatedBtnClicked[option] = '#178f2b';
       } else {
-        updatedBtnClicked[option] = 'red';
+        updatedBtnClicked[option] = '#be1c1c';
       }
       return updatedBtnClicked;
     });
@@ -93,15 +94,15 @@ function App() {
         <SearchBar token={token} handleArtistSelected={handleArtistSelected}></SearchBar>
       </div>
       <div className='controlsContainer'>
-        <Controls artistName={artistName} imageURL={imageURL} numOfTracks={numOfTracks} ytURL={ytURL}></Controls>
+        <Controls artistName={artistName} imageURL={imageURL} numOfTracks={numOfTracks} ytURL={ytURL} startGameCallback={handleStartGame}></Controls>
       </div>
       <div className='gameContainer'>
-        {randomTracks && <button style={{backgroundColor:btnClicked[0]}} onClick={()=>handleOptionBtn(0)} className='btnA optionBtn'>{String(randomTracks[0])} </button>}
-        {randomTracks && <button style={{backgroundColor:btnClicked[1]}} onClick={()=>handleOptionBtn(1)} className='btnA optionBtn'>{String(randomTracks[1])} </button>}
-        {randomTracks && <button style={{backgroundColor:btnClicked[2]}} onClick={()=>handleOptionBtn(2)} className='btnA optionBtn'>{String(randomTracks[2])} </button>}
-        {randomTracks && <button style={{backgroundColor:btnClicked[3]}} onClick={()=>handleOptionBtn(3)} className='btnA optionBtn'>{String(randomTracks[3])} </button>}
+          {randomTracks && <button style={{backgroundColor:btnClicked[0]}} onClick={()=>handleOptionBtn(0)} className='btnA optionBtn'>{String(randomTracks[0])} </button>}
+          {randomTracks && <button style={{backgroundColor:btnClicked[1]}} onClick={()=>handleOptionBtn(1)} className='btnA optionBtn'>{String(randomTracks[1])} </button>}
+          {randomTracks && <button style={{backgroundColor:btnClicked[2]}} onClick={()=>handleOptionBtn(2)} className='btnA optionBtn'>{String(randomTracks[2])} </button>}
+          {randomTracks && <button style={{backgroundColor:btnClicked[3]}} onClick={()=>handleOptionBtn(3)} className='btnA optionBtn'>{String(randomTracks[3])} </button>}
         <div className='startBtncontainer'>
-          {artistSelected && <button onClick={handleStartGame}>Start</button>}
+          {artistSelected && !gameStarted && <button onClick={handleStartGame}>Start</button>}
         </div>
       </div>
       
